@@ -1,7 +1,38 @@
-.App {
-  text-align: center;
+/* Reset some default styles */
+body, h1, h2, p {
+  margin: 0;
+  padding: 0;
 }
 
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+}
+
+/* Main container */
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-image: url("https://ubuntuhandbook.org/wp-content/uploads/2021/07/M-Maggs-pixabay.jpg"); /* Adjust the path to your image */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 100vh; /* Make the container height equal to the viewport height */
+  margin: 0; /* Remove any default margins */
+  overflow: hidden; /* Hide any overflow content */
+}
+
+
+h1 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* ... (previous styles) */
+
+/* Weather tiles */
 .weather-container {
   display: flex;
   flex-wrap: wrap;
@@ -10,8 +41,58 @@
 }
 
 .weather-tile {
-  border: 1px solid #ccc;
-  padding: 10px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2), 0 2px 4px rgba(0, 0, 0, 0.1); /* Add white shadow */
+  padding: 20px;
   width: 300px;
   text-align: center;
+  transition: transform 0.2s, background-color 0.2s; /* Add background-color transition */
+  position: relative; /* Set position to make overlay work */
+}
+
+.weather-tile .tile-content {
+  position: relative; /* Ensure content is positioned within the tile */
+  z-index: 2; /* Move content above overlay */
+}
+
+.weather-tile:hover {
+  transform: translateY(-5px);
+}
+
+.weather-tile h2 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.weather-tile p {
+  color: #666;
+  margin: 8px 0;
+}
+
+
+/* Background colors based on weather status */
+.weather-tile.Clouds {
+  background-color: #e0e0e0; /* Light gray for Clouds */
+}
+
+.weather-tile.Clear {
+  background-color: #80aaff; /* Light blue for Clear */
+}
+
+.weather-tile.Rain {
+  background-color: #78909c; /* Grayish blue for Rain */
+}
+
+.weather-tile.Mist {
+  background-color: #cfd8dc; /* Light gray for Mist */
+}
+
+/* OpenWeatherMap logo */
+.openweathermap-logo {
+  margin-top: 20px;
+}
+
+.openweathermap-logo img {
+  width: 100px;
+  height: auto;
 }
