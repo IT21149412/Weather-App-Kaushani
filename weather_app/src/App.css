@@ -1,0 +1,17 @@
+.App {
+  text-align: center;
+}
+
+.weather-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.weather-tile {
+  border: 1px solid #ccc;
+  padding: 10px;
+  width: 300px;
+  text-align: center;
+}
