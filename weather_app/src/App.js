@@ -32,26 +32,26 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Weather Information</h1>
+      <h1>Weather App</h1>
       <div className="weather-container">
         {weatherData.map(city => {
-          const weatherStatus = city.weather[0].main.toLowerCase(); // Get the main weather status
-          const weatherIcon = city.weather[0].icon; // Get the weather icon code
+          const weatherStatus = city.weather[0].main.toLowerCase(); 
+          const weatherIcon = city.weather[0].icon; 
 
-          // Define background colors based on main weather status
+          // Define background colors based on weather
           let overlayColor;
           switch (weatherStatus) {
             case 'thunderstorm':
-              overlayColor = 'rgba(160, 160, 160, 0.5)'; // Light gray overlay for Thunderstorm
+              overlayColor = 'rgba(160, 160, 160, 0.5)'; // Light gray for Thunderstorm
               break;
             case 'drizzle':
-              overlayColor = 'rgba(165, 214, 218, 0.5)'; // Light teal overlay for Drizzle
+              overlayColor = 'rgba(165, 214, 218, 0.5)'; // Light teal for Drizzle
               break;
             case 'rain':
-              overlayColor = 'rgba(134, 203, 139, 0.5)'; // Light green overlay for Rain
+              overlayColor = 'rgba(134, 203, 139, 0.5)'; // Light greenn for Rain
               break;
             case 'snow':
-              overlayColor = 'rgba(224, 224, 224, 0.5)'; // Light gray overlay for Snow
+              overlayColor = 'rgba(224, 224, 224, 0.5)'; // Light gray for Snow
               break;
             case 'mist':
             case 'smoke':
@@ -60,27 +60,27 @@ function App() {
             case 'fog':
             case 'sand':
             case 'ash':
-              overlayColor = 'rgba(209, 218, 219, 0.5)'; // Light gray overlay for various conditions
+              overlayColor = 'rgba(209, 218, 219, 0.5)'; // Light gray for various conditions
               break;
             case 'squall':
             case 'tornado':
-              overlayColor = 'rgba(98, 125, 140, 0.5)'; // Light blue gray overlay for Squall and Tornado
+              overlayColor = 'rgba(98, 125, 140, 0.5)'; // Light blue for Squall and Tornado
               break;
             case 'clear':
-              overlayColor = 'rgba(255, 176, 96, 0.5)'; // Light orange overlay for Clear
+              overlayColor = 'rgba(255, 176, 96, 0.5)'; // Light orange for Clear
               break;
             case 'clouds':
-              overlayColor = 'rgba(139, 158, 172, 0.5)'; // Light blue gray overlay for Clouds
+              overlayColor = 'rgba(139, 158, 172, 0.5)'; // Light blue for Clouds
               break;
             default:
-              overlayColor = 'rgba(255, 255, 255, 0.5)'; // Default overlay color
+              overlayColor = 'rgba(255, 255, 255, 0.5)'; // Default
           }
 
           const tileStyle = {
             background: `url('https://img.freepik.com/free-vector/gorgeous-clouds-background-with-blue-sky-design_1017-25501.jpg')`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            position: 'relative', // Set position to make overlay work
+            position: 'relative', 
           };
 
           const overlayStyle = {
@@ -98,17 +98,19 @@ function App() {
             <div
               key={city.id}
               className="weather-tile"
-              style={tileStyle} // Apply inline style
+              style={tileStyle} 
             >
               <div style={overlayStyle}></div>
               <div className="tile-content">
-                <h2>{city.name}</h2>
+                <h2>{city.name}, {city.sys.country}</h2>
+                <h3>{city.weather[0].description}</h3>
                 <img
-                  src={`http://openweathermap.org/img/w/${weatherIcon}.png`} // Icon URL
+                  src={`http://openweathermap.org/img/w/${weatherIcon}.png`} 
                   alt="Weather Icon"
                 />
-                <p>Temperature: {city.main.temp} °C</p>
-                <p>Weather: {city.weather[0].description}</p>
+                <h3>Temperature: {city.main.temp} °C</h3>
+                <p>Min Temp: {city.main.temp_min}     Max Temp: {city.main.temp_max}</p>
+              
                 
               </div>
             </div>
